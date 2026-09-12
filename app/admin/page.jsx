@@ -3,21 +3,21 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { 
-  Plus, 
-  Trash2, 
-  Edit3, 
-  LogOut, 
-  ExternalLink, 
-  Github, 
-  ArrowLeft, 
-  Sparkles, 
-  Layers, 
-  CheckCircle2, 
+import {
+  Plus,
+  Trash2,
+  Edit3,
+  LogOut,
+  ExternalLink,
+  Github,
+  ArrowLeft,
+  Sparkles,
+  Layers,
+  CheckCircle2,
   AlertCircle,
   X,
   RefreshCw,
-  Eye
+  Eye,
 } from "lucide-react";
 
 export default function AdminDashboardPage() {
@@ -49,14 +49,36 @@ export default function AdminDashboardPage() {
   const [formData, setFormData] = useState(initialForm);
 
   const gradientPresets = [
-    { label: "Cyan & Purple", value: "from-cyan-500/20 via-blue-500/20 to-purple-500/20" },
-    { label: "Emerald & Teal", value: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20" },
-    { label: "Violet & Pink", value: "from-purple-500/20 via-pink-500/20 to-indigo-500/20" },
-    { label: "Amber & Rose", value: "from-amber-500/20 via-orange-500/20 to-rose-500/20" },
-    { label: "Sky & Emerald", value: "from-blue-500/20 via-cyan-500/20 to-emerald-500/20" },
+    {
+      label: "Cyan & Purple",
+      value: "from-cyan-500/20 via-blue-500/20 to-purple-500/20",
+    },
+    {
+      label: "Emerald & Teal",
+      value: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
+    },
+    {
+      label: "Violet & Pink",
+      value: "from-purple-500/20 via-pink-500/20 to-indigo-500/20",
+    },
+    {
+      label: "Amber & Rose",
+      value: "from-amber-500/20 via-orange-500/20 to-rose-500/20",
+    },
+    {
+      label: "Sky & Emerald",
+      value: "from-blue-500/20 via-cyan-500/20 to-emerald-500/20",
+    },
   ];
 
-  const availableCategories = ["React", "Next.js", "Fullstack", "API", "Mobile", "UI/UX"];
+  const availableCategories = [
+    "React",
+    "Next.js",
+    "Fullstack",
+    "API",
+    "Mobile",
+    "UI/UX",
+  ];
 
   const showToast = (msg, type = "success") => {
     setToastMessage(msg);
@@ -162,7 +184,10 @@ export default function AdminDashboardPage() {
         title: formData.title,
         description: formData.description,
         categories: formData.categories,
-        tags: formData.tags.split(",").map((t) => t.trim()).filter(Boolean),
+        tags: formData.tags
+          .split(",")
+          .map((t) => t.trim())
+          .filter(Boolean),
         demoUrl: formData.demoUrl,
         githubUrl: formData.githubUrl,
         accentGradient: formData.accentGradient,
@@ -275,7 +300,8 @@ export default function AdminDashboardPage() {
             </span>
           </div>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Yangi loyihalaringizni qoʻshing, tahrirlang yoki oʻchiring. Oʻzgarishlar darhol saytda aks etadi.
+            Yangi loyihalaringizni qoʻshing, tahrirlang yoki oʻchiring.
+            Oʻzgarishlar darhol saytda aks etadi.
           </p>
         </div>
 
@@ -316,7 +342,9 @@ export default function AdminDashboardPage() {
       ) : projects.length === 0 ? (
         <div className="py-20 rounded-3xl glass-panel border border-white/10 text-center p-8">
           <Layers className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <h3 className="text-lg font-semibold text-white mb-1">Hali loyihalar yoʻq</h3>
+          <h3 className="text-lg font-semibold text-white mb-1">
+            Hali loyihalar yoʻq
+          </h3>
           <p className="text-sm text-slate-400 mb-6 max-w-sm mx-auto">
             Birinchi loyihangizni qoʻshish uchun yuqoridagi tugmani bosing.
           </p>
@@ -414,7 +442,9 @@ export default function AdminDashboardPage() {
                     <span>Tahrirlash</span>
                   </button>
                   <button
-                    onClick={() => handleDeleteProject(project.id, project.title)}
+                    onClick={() =>
+                      handleDeleteProject(project.id, project.title)
+                    }
                     className="p-1.5 rounded-lg text-rose-400 hover:text-rose-300 hover:bg-rose-500/15 transition-colors"
                     title="O'chirish"
                   >
@@ -439,7 +469,9 @@ export default function AdminDashboardPage() {
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-white">
-                    {editingProject ? "Loyihani tahrirlash" : "Yangi loyiha qoʻshish"}
+                    {editingProject
+                      ? "Loyihani tahrirlash"
+                      : "Yangi loyiha qoʻshish"}
                   </h2>
                   <p className="text-xs text-slate-400">
                     Barcha maydonlarni toʻldiring va saqlang
@@ -465,7 +497,9 @@ export default function AdminDashboardPage() {
                   type="text"
                   required
                   value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, title: e.target.value })
+                  }
                   placeholder="Masalan: AI Platform SaaS"
                   className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:bg-white/[0.06]"
                 />
@@ -480,7 +514,9 @@ export default function AdminDashboardPage() {
                   required
                   rows={3}
                   value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                  }
                   placeholder="Loyiha nima vazifani bajarishi va asosiy imkoniyatlari haqida qisqa ma'lumot..."
                   className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:bg-white/[0.06] resize-none"
                 />
@@ -489,7 +525,8 @@ export default function AdminDashboardPage() {
               {/* Categories Selector */}
               <div>
                 <label className="block text-xs font-medium text-slate-300 mb-2">
-                  Kategoriyalar (bir yoki bir nechtasini tanlang) <span className="text-cyan-400">*</span>
+                  Kategoriyalar (bir yoki bir nechtasini tanlang){" "}
+                  <span className="text-cyan-400">*</span>
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {availableCategories.map((cat) => {
@@ -520,7 +557,9 @@ export default function AdminDashboardPage() {
                 <input
                   type="text"
                   value={formData.tags}
-                  onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, tags: e.target.value })
+                  }
                   placeholder="Next.js 14, Tailwind CSS, TypeScript, OpenAI API"
                   className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:bg-white/[0.06]"
                 />
@@ -535,7 +574,9 @@ export default function AdminDashboardPage() {
                   <input
                     type="url"
                     value={formData.demoUrl}
-                    onChange={(e) => setFormData({ ...formData, demoUrl: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, demoUrl: e.target.value })
+                    }
                     placeholder="https://myproject.com"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:bg-white/[0.06]"
                   />
@@ -547,7 +588,9 @@ export default function AdminDashboardPage() {
                   <input
                     type="url"
                     value={formData.githubUrl}
-                    onChange={(e) => setFormData({ ...formData, githubUrl: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, githubUrl: e.target.value })
+                    }
                     placeholder="https://github.com/user/repo"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:bg-white/[0.06]"
                   />
@@ -563,7 +606,12 @@ export default function AdminDashboardPage() {
                   <input
                     type="text"
                     value={formData.featuredBadge}
-                    onChange={(e) => setFormData({ ...formData, featuredBadge: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        featuredBadge: e.target.value,
+                      })
+                    }
                     placeholder="Featured, New, Hot, yoki bo'sh qoldiring"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:bg-white/[0.06]"
                   />
@@ -574,11 +622,20 @@ export default function AdminDashboardPage() {
                   </label>
                   <select
                     value={formData.accentGradient}
-                    onChange={(e) => setFormData({ ...formData, accentGradient: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        accentGradient: e.target.value,
+                      })
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-[#0d0f17] border border-white/10 text-white text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
                   >
                     {gradientPresets.map((preset) => (
-                      <option key={preset.value} value={preset.value} className="bg-[#0d0f17] text-white">
+                      <option
+                        key={preset.value}
+                        value={preset.value}
+                        className="bg-[#0d0f17] text-white"
+                      >
                         {preset.label}
                       </option>
                     ))}
@@ -601,7 +658,11 @@ export default function AdminDashboardPage() {
                   disabled={isSubmitting}
                   className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all disabled:opacity-50"
                 >
-                  {isSubmitting ? "Saqlanmoqda..." : editingProject ? "Oʻzgarishlarni saqlash" : "Loyihani qoʻshish"}
+                  {isSubmitting
+                    ? "Saqlanmoqda..."
+                    : editingProject
+                      ? "Oʻzgarishlarni saqlash"
+                      : "Loyihani qoʻshish"}
                 </button>
               </div>
             </form>

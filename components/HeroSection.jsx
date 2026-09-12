@@ -13,8 +13,11 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 overflow-hidden">
-      {/* Background Neon Glow Light Blobs (blur-[120px]) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-gradient-to-tr from-cyan-500/15 via-blue-500/10 to-purple-600/15 rounded-full blur-[120px] pointer-events-none -z-10" />
+      {/* Center accent blob */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] rounded-full blur-[120px] pointer-events-none -z-10 opacity-40"
+        style={{ background: "radial-gradient(ellipse, rgba(var(--accent-rgb),0.3), transparent 70%)" }}
+      />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
         {/* Availability Status Badge */}
@@ -22,13 +25,14 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel-subtle border border-emerald-500/20 mb-8 shadow-[0_0_15px_rgba(16,185,129,0.1)]"
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel-subtle mb-8"
+          style={{ border: "1px solid rgba(16,185,129,0.25)", boxShadow: "0 0 15px rgba(16,185,129,0.12)" }}
         >
           <span className="relative flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
           </span>
-          <span className="text-xs sm:text-sm font-medium text-emerald-300">
+          <span className="text-xs sm:text-sm font-medium text-emerald-400">
             Available for new opportunities & freelance projects
           </span>
         </motion.div>
@@ -39,9 +43,13 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.15] mb-6"
+          style={{ color: "var(--text-main)" }}
         >
           Building Modern & Fluid Web Experiences with{" "}
-          <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(6,182,212,0.3)]">
+          <span
+            className="bg-clip-text text-transparent"
+            style={{ backgroundImage: "linear-gradient(135deg, var(--accent-color), rgba(var(--accent-rgb),0.6), #c084fc)" }}
+          >
             Next.js & Glass UI
           </span>
         </motion.h1>
@@ -51,7 +59,8 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="max-w-2xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mb-10"
+          style={{ color: "var(--text-sub)" }}
         >
           Assalomu alaykum! Men zamonaviy web ilovalar, yuqori unumdorlikka ega frontend arxitekturasi va interaktiv interfeyslar yaratuvchi Full-Stack dasturchiman.
         </motion.p>
@@ -65,12 +74,16 @@ export default function HeroSection() {
         >
           {/* Primary View Projects Button */}
           <Link
-            href="#projects"
-            className="group relative inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-xl font-semibold text-white overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.35)] hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] transition-all duration-300"
+            href="/#projects"
+            className="group relative inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105"
+            style={{ boxShadow: `0 0 30px rgba(var(--accent-rgb), 0.4)` }}
           >
-            <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600" />
+            <span
+              className="absolute inset-0"
+              style={{ background: `linear-gradient(135deg, var(--accent-color), rgba(var(--accent-rgb),0.6))` }}
+            />
             <span className="relative z-10 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-cyan-200" />
+              <Sparkles className="w-4 h-4" />
               View Projects
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
@@ -78,20 +91,22 @@ export default function HeroSection() {
 
           {/* Contact Me Button */}
           <Link
-            href="#contact"
-            className="glass-card-interactive px-6 sm:px-8 py-3.5 rounded-xl font-medium text-slate-200 hover:text-white flex items-center gap-2"
+            href="/#contact"
+            className="glass-card-interactive px-6 sm:px-8 py-3.5 rounded-xl font-medium flex items-center gap-2 transition-all"
+            style={{ color: "var(--text-main)" }}
           >
-            <Terminal className="w-4 h-4 text-cyan-400" />
+            <Terminal className="w-4 h-4" style={{ color: "var(--accent-color)" }} />
             <span>Contact Me</span>
           </Link>
 
-          {/* Download CV / Resume Button */}
+          {/* Download CV Button */}
           <a
             href="#contact"
             download
-            className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl text-slate-300 hover:text-white bg-white/[0.02] border border-white/10 hover:border-white/20 transition-colors duration-200 text-sm font-medium"
+            className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl text-sm font-medium transition-colors duration-200 glass-panel"
+            style={{ color: "var(--text-sub)" }}
           >
-            <Download className="w-4 h-4 text-slate-400" />
+            <Download className="w-4 h-4" />
             <span>Download CV</span>
           </a>
         </motion.div>
@@ -108,14 +123,21 @@ export default function HeroSection() {
             return (
               <div
                 key={index}
-                className="glass-panel p-5 rounded-2xl border border-white/[0.08] hover:border-cyan-500/30 transition-all duration-300 flex items-center justify-center gap-4 text-left group"
+                className="glass-card-interactive p-5 rounded-2xl flex items-center justify-center gap-4 text-left group"
               >
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-                  <IconComponent className="w-6 h-6" />
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: `rgba(var(--accent-rgb), 0.12)`, border: `1px solid rgba(var(--accent-rgb), 0.2)` }}
+                >
+                  <IconComponent className="w-6 h-6" style={{ color: "var(--accent-color)" }} />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white tracking-tight">{stat.value}</div>
-                  <div className="text-xs text-slate-400 uppercase tracking-wider">{stat.label}</div>
+                  <div className="text-2xl font-bold tracking-tight" style={{ color: "var(--text-main)" }}>
+                    {stat.value}
+                  </div>
+                  <div className="text-xs uppercase tracking-wider" style={{ color: "var(--text-sub)" }}>
+                    {stat.label}
+                  </div>
                 </div>
               </div>
             );
