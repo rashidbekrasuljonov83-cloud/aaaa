@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUp, Code2, Heart } from "lucide-react";
+import { ArrowUp, Code2, Heart, ShieldCheck } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
           <div>
             <span className="font-bold text-white tracking-tight">
-              Dev<span className="text-cyan-400">.Portfolio</span>
+              Rashidbek<span className="text-cyan-400">.Portfolio</span>
             </span>
             <span className="text-xs text-slate-400 ml-2 hidden sm:inline">
               Ultra-modern Glassmorphism Portfolio
@@ -26,11 +26,21 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Made with passion */}
-        <div className="text-xs text-slate-400 flex items-center gap-1">
-          <span>Crafted with</span>
-          <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline mx-0.5" />
-          <span>using Next.js 14, Tailwind CSS & Framer Motion</span>
+        {/* Made with passion & Admin link */}
+        <div className="flex flex-col sm:flex-row items-center gap-3 text-xs text-slate-400">
+          <div className="flex items-center gap-1">
+            <span>Crafted with</span>
+            <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline mx-0.5" />
+            <span>using Next.js 14, Tailwind CSS & Framer Motion</span>
+          </div>
+          <span className="hidden sm:inline text-slate-600">•</span>
+          <Link
+            href="/admin"
+            className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-1"
+          >
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Admin Panel</span>
+          </Link>
         </div>
 
         {/* Back to top button */}

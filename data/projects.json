@@ -1,0 +1,39 @@
+[
+  {
+    "id": "1789209665526",
+    "title": "Kalkulyator",
+    "description": "misollarni qiymatini topuvchi site",
+    "categories": [
+      "Next.js",
+      "Fullstack"
+    ],
+    "tags": [
+      "html",
+      "css",
+      "javascript"
+    ],
+    "demoUrl": "https://extraordinary-cajeta-3a4ee0.netlify.app/",
+    "githubUrl": "https://github.com/rashidbekrasuljonov83-cloud/calculyator",
+    "accentGradient": "from-cyan-500/20 via-blue-500/20 to-purple-500/20",
+    "featuredBadge": "new",
+    "createdAt": "2026-09-12T10:41:05.526Z"
+  },
+  {
+    "id": "6",
+    "title": "TaskFlow Kanban & Roadmap",
+    "description": "Loyihalarni sprintlarga ajratish, drag-and-drop kanban doskasi va jamoaviy analitika vositasi.",
+    "categories": [
+      "React"
+    ],
+    "tags": [
+      "React",
+      "Framer Motion",
+      "Zustand",
+      "Tailwind CSS",
+      "dnd-kit"
+    ],
+    "demoUrl": "https://example.com/demo6",
+    "githubUrl": "https://github.com/example/task-flow",
+    "accentGradient": "from-violet-500/20 via-purple-500/20 to-cyan-500/20"
+  }
+]

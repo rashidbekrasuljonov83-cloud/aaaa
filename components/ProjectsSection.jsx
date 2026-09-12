@@ -1,16 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Sparkles, Layers, ArrowUpRight } from "lucide-react";
+import { Github, Sparkles, Layers, ArrowUpRight } from "lucide-react";
 
 export default function ProjectsSection() {
-  const categories = ["All", "React", "Next.js", "Fullstack", "API"];
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const projects = [
+  const [projects, setProjects] = useState([
     {
-      id: 1,
+      id: "1",
       title: "AI Studio SaaS Platform",
       description:
         "Generative AI yordamida kontent yaratish va tasvirlarni qayta ishlovchi to'liq avtomatlashtirilgan SaaS platformasi.",
@@ -22,30 +19,42 @@ export default function ProjectsSection() {
       featuredBadge: "Featured",
     },
     {
-      id: 2,
+      id: "2",
       title: "Nova Glass E-Commerce",
       description:
         "Ultra-zamonaviy interfeysga ega onlayn doʻkon, savatcha boshqaruvi va tezkor toʻlov tizimlari integratsiyasi.",
       categories: ["React", "API"],
-      tags: ["React 18", "Redux Toolkit", "Tailwind CSS", "REST API", "Framer Motion"],
+      tags: [
+        "React 18",
+        "Redux Toolkit",
+        "Tailwind CSS",
+        "REST API",
+        "Framer Motion",
+      ],
       demoUrl: "https://example.com/demo2",
       githubUrl: "https://github.com/example/nova-shop",
       accentGradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
     },
     {
-      id: 3,
+      id: "3",
       title: "DevSocial Community Hub",
       description:
         "Dasturchilar uchun real-vaqt rejimida kod almashish, forum va networking yaratuvchi full-stack ijtimoiy platforma.",
       categories: ["Next.js", "Fullstack"],
-      tags: ["Next.js 14", "TypeScript", "Supabase", "Tailwind CSS", "WebSockets"],
+      tags: [
+        "Next.js 14",
+        "TypeScript",
+        "Supabase",
+        "Tailwind CSS",
+        "WebSockets",
+      ],
       demoUrl: "https://example.com/demo3",
       githubUrl: "https://github.com/example/dev-social",
       accentGradient: "from-purple-500/20 via-pink-500/20 to-indigo-500/20",
       featuredBadge: "Popular",
     },
     {
-      id: 4,
+      id: "4",
       title: "CryptoPulse Live Tracker",
       description:
         "Real-vaqt kriptovalyuta narxlarini kuzatuvchi, interaktiv grafiklar va narx signallari bilan boyitilgan dashboard.",
@@ -56,7 +65,7 @@ export default function ProjectsSection() {
       accentGradient: "from-amber-500/20 via-orange-500/20 to-rose-500/20",
     },
     {
-      id: 5,
+      id: "5",
       title: "CloudVault File Manager",
       description:
         "Fayllarni xavfsiz saqlash, shifrlash va tezkor almashish imkoniyatini beruvchi bulutli saqlash boshqaruv tizimi.",
@@ -67,7 +76,7 @@ export default function ProjectsSection() {
       accentGradient: "from-blue-500/20 via-cyan-500/20 to-emerald-500/20",
     },
     {
-      id: 6,
+      id: "6",
       title: "TaskFlow Kanban & Roadmap",
       description:
         "Loyihalarni sprintlarga ajratish, drag-and-drop kanban doskasi va jamoaviy analitika vositasi.",
@@ -77,15 +86,45 @@ export default function ProjectsSection() {
       githubUrl: "https://github.com/example/task-flow",
       accentGradient: "from-violet-500/20 via-purple-500/20 to-cyan-500/20",
     },
-  ];
+  ]);
+
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  // Fetch projects from /api/projects
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const res = await fetch("/api/projects", { cache: "no-store" });
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          setProjects(data.data);
+        }
+      } catch (error) {
+        console.error("Error loading projects from API:", error);
+      }
+    }
+    fetchProjects();
+  }, []);
+
+  // Compute unique categories
+  const baseCategories = ["All", "React", "Next.js", "Fullstack", "API"];
+  const dynamicCategories = Array.from(
+    new Set(projects.flatMap((p) => p.categories || [])),
+  ).filter((c) => !baseCategories.includes(c));
+  const categories = [...baseCategories, ...dynamicCategories];
 
   const filteredProjects =
     activeCategory === "All"
       ? projects
-      : projects.filter((p) => p.categories.includes(activeCategory));
+      : projects.filter(
+          (p) => p.categories && p.categories.includes(activeCategory),
+        );
 
   return (
-    <section id="projects" className="relative py-20 px-4 sm:px-6 max-w-6xl mx-auto">
+    <section
+      id="projects"
+      className="relative py-20 px-4 sm:px-6 max-w-6xl mx-auto"
+    >
       {/* Background Neon Blur */}
       <div className="absolute top-1/2 left-0 w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
@@ -99,7 +138,8 @@ export default function ProjectsSection() {
           Featured Projects
         </h2>
         <p className="text-slate-400 text-sm sm:text-base">
-          Mening soʻnggi web-ishlanmalarim, startap loyihalarim va texnik tajribalarim.
+          Mening soʻnggi web-ishlanmalarim, startap loyihalarim va texnik
+          tajribalarim.
         </p>
       </div>
 
@@ -148,7 +188,7 @@ export default function ProjectsSection() {
             >
               {/* Card Top Preview Banner with Glass Gradient */}
               <div
-                className={`relative w-full h-44 rounded-xl mb-5 overflow-hidden bg-gradient-to-br ${project.accentGradient} border border-white/10 flex items-center justify-center p-4`}
+                className={`relative w-full h-44 rounded-xl mb-5 overflow-hidden bg-gradient-to-br ${project.accentGradient || "from-cyan-500/20 via-blue-500/20 to-purple-500/20"} border border-white/10 flex items-center justify-center p-4`}
               >
                 {/* Background Grid Pattern in Mockup */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
@@ -180,7 +220,7 @@ export default function ProjectsSection() {
 
                 {/* Technology Badges */}
                 <div className="flex flex-wrap gap-1.5 mb-6">
-                  {project.tags.map((tag) => (
+                  {project.tags?.map((tag) => (
                     <span
                       key={tag}
                       className="text-xs px-2.5 py-1 rounded-lg bg-white/[0.04] text-cyan-300/90 border border-white/[0.07] group-hover:border-cyan-500/20 transition-colors"
@@ -194,7 +234,7 @@ export default function ProjectsSection() {
               {/* Action Links (Live Demo & GitHub) */}
               <div className="pt-4 border-t border-white/[0.07] flex items-center justify-between mt-auto">
                 <a
-                  href={project.demoUrl}
+                  href={project.demoUrl || "#"}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 px-3.5 py-2 rounded-lg transition-all duration-200"
@@ -204,7 +244,7 @@ export default function ProjectsSection() {
                 </a>
 
                 <a
-                  href={project.githubUrl}
+                  href={project.githubUrl || "#"}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/[0.05] transition-colors duration-200"

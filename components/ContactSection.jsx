@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Send, 
-  Mail, 
-  Github, 
-  Linkedin, 
-  MessageSquare, 
-  MapPin, 
-  CheckCircle2, 
+import {
+  Send,
+  Mail,
+  Github,
+  Linkedin,
+  MessageSquare,
+  MapPin,
+  CheckCircle2,
   Sparkles,
-  Clock
+  Clock,
 } from "lucide-react";
 
 export default function ContactSection() {
@@ -45,36 +45,35 @@ export default function ContactSection() {
   const socialLinks = [
     {
       name: "Telegram",
-      handle: "@developer_uz",
-      url: "https://t.me/developer_uz",
+      handle: "@Rashd_uz",
+      url: "https://t.me/Rashd_uz",
       icon: MessageSquare,
       color: "hover:text-sky-400 hover:border-sky-400/40 hover:bg-sky-400/10",
     },
     {
       name: "GitHub",
-      handle: "github.com/developer",
-      url: "https://github.com",
+      handle: "rashidbekrasuljonov83-cloud",
+      url: "https://github.com/rashidbekrasuljonov83-cloud",
       icon: Github,
-      color: "hover:text-purple-400 hover:border-purple-400/40 hover:bg-purple-400/10",
+      color:
+        "hover:text-purple-400 hover:border-purple-400/40 hover:bg-purple-400/10",
     },
-    {
-      name: "LinkedIn",
-      handle: "linkedin.com/in/developer",
-      url: "https://linkedin.com",
-      icon: Linkedin,
-      color: "hover:text-blue-400 hover:border-blue-400/40 hover:bg-blue-400/10",
-    },
+
     {
       name: "Email",
-      handle: "hello@developer.dev",
-      url: "mailto:hello@developer.dev",
+      handle: "rashidbekrasuljonov83@gmail.com",
+      url: "mailto:rashidbekrasuljonov83@gmail.com",
       icon: Mail,
-      color: "hover:text-cyan-400 hover:border-cyan-400/40 hover:bg-cyan-400/10",
+      color:
+        "hover:text-cyan-400 hover:border-cyan-400/40 hover:bg-cyan-400/10",
     },
   ];
 
   return (
-    <section id="contact" className="relative py-20 px-4 sm:px-6 max-w-6xl mx-auto">
+    <section
+      id="contact"
+      className="relative py-20 px-4 sm:px-6 max-w-6xl mx-auto"
+    >
       {/* Background Glow */}
       <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none -z-10" />
 
@@ -95,9 +94,11 @@ export default function ContactSection() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4 leading-tight">
               Keling, birgalikda ajoyib loyiha yaratamiz.
             </h2>
-            
+
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-8">
-              Menga yangi loyihangiz, mavjud tizimni yaxshilash yoki hamkorlik takliflari boʻyicha bemalol murojaat qilishingiz mumkin. Tez orada javob qaytaraman!
+              Menga yangi loyihangiz, mavjud tizimni yaxshilash yoki hamkorlik
+              takliflari boʻyicha bemalol murojaat qilishingiz mumkin. Tez orada
+              javob qaytaraman!
             </p>
 
             {/* Quick Details Badges */}
@@ -106,7 +107,7 @@ export default function ContactSection() {
                 <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center text-cyan-400">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span>Tashkent, Uzbekistan (Remote Available)</span>
+                <span>Ferg'ona, Uzbekistan (Remote Available)</span>
               </div>
               <div className="flex items-center gap-3 text-slate-300 text-sm">
                 <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center text-cyan-400">
@@ -139,10 +140,14 @@ export default function ContactSection() {
                         <div className="text-sm font-semibold text-white group-hover:text-inherit transition-colors">
                           {item.name}
                         </div>
-                        <div className="text-xs text-slate-400">{item.handle}</div>
+                        <div className="text-xs text-slate-400">
+                          {item.handle}
+                        </div>
                       </div>
                     </div>
-                    <span className="text-xs text-slate-500 group-hover:text-inherit">→</span>
+                    <span className="text-xs text-slate-500 group-hover:text-inherit">
+                      →
+                    </span>
                   </a>
                 );
               })}
@@ -158,7 +163,9 @@ export default function ContactSection() {
 
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-1">Xabar yuborish</h3>
+                <h3 className="text-2xl font-bold text-white mb-1">
+                  Xabar yuborish
+                </h3>
                 <p className="text-xs sm:text-sm text-slate-400">
                   Quyidagi formani toʻldiring va xabaringizni joʻnating.
                 </p>
@@ -176,7 +183,10 @@ export default function ContactSection() {
                 className="mb-6 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 flex items-center gap-3 text-sm"
               >
                 <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                <span>Rahmat! Xabaringiz muvaffaqiyatli yetib keldi. Tez orada bogʻlanaman.</span>
+                <span>
+                  Rahmat! Xabaringiz muvaffaqiyatli yetib keldi. Tez orada
+                  bogʻlanaman.
+                </span>
               </motion.div>
             )}
 
@@ -255,7 +265,7 @@ export default function ContactSection() {
               >
                 {/* Gradient Background */}
                 <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600" />
-                
+
                 {/* Button Content */}
                 <span className="relative z-10 flex items-center gap-2 text-sm">
                   {isSubmitting ? (

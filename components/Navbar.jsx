@@ -3,7 +3,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
+import {
+  Code2,
+  Menu,
+  X,
+  ArrowUpRight,
+  Sparkles,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +25,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "Tech Stack", href: "#tech-stack" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/#hero" },
+    { name: "Tech Stack", href: "/#tech-stack" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -35,7 +42,7 @@ export default function Navbar() {
       >
         {/* Brand / Logo */}
         <Link
-          href="#hero"
+          href="/#hero"
           className="flex items-center gap-2.5 group cursor-pointer focus:outline-none"
         >
           <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-105 group-hover:border-cyan-400/60 transition-all duration-300">
@@ -44,7 +51,7 @@ export default function Navbar() {
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-cyan-400" />
           </div>
           <span className="text-lg font-bold tracking-tight text-white flex items-center gap-1">
-            Dev<span className="text-cyan-400">.Portfolio</span>
+            Rashidbek<span className="text-cyan-400">.Portfolio</span>
           </span>
         </Link>
 
@@ -62,17 +69,26 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Right CTA Button (Desktop) */}
+        {/* Right Action Buttons (Desktop) */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Admin Link Button */}
           <Link
-            href="#contact"
+            href="/admin"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white glass-panel-subtle hover:border-cyan-500/30 transition-colors"
+            title="Admin Panel"
+          >
+            <ShieldCheck className="w-4 h-4 text-cyan-400" />
+            <span>Admin</span>
+          </Link>
+
+          {/* Glowing CTA Button */}
+          <Link
+            href="/#contact"
             className="relative group inline-flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-semibold text-white overflow-hidden transition-all duration-300"
           >
-            {/* Glowing gradient background */}
             <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 opacity-80 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-            {/* Glow bloom */}
             <span className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-xl blur-sm opacity-50 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-            
+
             <span className="relative z-10 flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-cyan-200 animate-pulse" />
               Get in touch
@@ -87,7 +103,11 @@ export default function Navbar() {
           className="md:hidden relative p-2 text-slate-300 hover:text-white rounded-xl bg-white/[0.04] border border-white/10 focus:outline-none transition-colors"
           aria-label="Toggle Navigation Menu"
         >
-          {isOpen ? <X className="w-6 h-6 text-cyan-400" /> : <Menu className="w-6 h-6" />}
+          {isOpen ? (
+            <X className="w-6 h-6 text-cyan-400" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </nav>
 
@@ -113,9 +133,21 @@ export default function Navbar() {
               </Link>
             ))}
 
+            <Link
+              href="/admin"
+              onClick={() => setIsOpen(false)}
+              className="px-4 py-2.5 rounded-xl text-cyan-300 hover:text-white hover:bg-cyan-500/10 border border-cyan-500/20 transition-all font-medium flex items-center justify-between text-base"
+            >
+              <span className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-cyan-400" />
+                Admin Panel
+              </span>
+              <span className="text-cyan-400 text-xs">→</span>
+            </Link>
+
             <div className="pt-2 border-t border-white/10 mt-1">
               <Link
-                href="#contact"
+                href="/#contact"
                 onClick={() => setIsOpen(false)}
                 className="w-full relative flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-white font-medium overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.3)]"
               >
